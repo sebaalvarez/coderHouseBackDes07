@@ -8,7 +8,7 @@ import FileStore from "session-file-store";
 import MongoStore from "connect-mongo";
 
 import _dirname from "./utils.js";
-
+import { config } from "../src/config/config.js";
 import productRoutes from "./routes/products.routes.js";
 import cartRoutes from "./routes/carts.routes.js";
 import viewsRouter from "./routes/views.router.js";
@@ -21,9 +21,10 @@ import initializePassport from "./config/passport.config.js";
 
 // const fileStorage = FileStore(session);
 const app = express();
-const PORT = 8080;
-const MONGO_URL =
-  "mongodb://localhost:27017/ecommerce?retryWrites=true&w=majority";
+const PORT = config.server.PORT;
+// 8080;
+const MONGO_URL = config.mongodb.host;
+// "mongodb://localhost:27017/ecommerce?retryWrites=true&w=majority";
 
 // middleware
 app.use(express.json());

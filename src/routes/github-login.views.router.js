@@ -1,17 +1,16 @@
-import {Router} from 'express'
+import { Router } from "express";
+import {
+  login,
+  user,
+  error,
+} from "../services/db/controllers/github-login.views.controller.js";
 
 const router = Router();
 
-router.get('/login', (req, res )=>{
-    res.render('github-login')
-})
+router.get("/login", login);
 
-router.get('/', (req, res )=>{
-    res.redirect('/users')
-})
+router.get("/", user);
 
-router.get('/error', (req, res )=>{
-    res.render("error", {error: "No se pudo autenticar usando GitHub!"});
-})
+router.get("/error", error);
 
 export default router;

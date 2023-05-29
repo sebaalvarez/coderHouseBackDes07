@@ -1,18 +1,16 @@
-import {Router} from 'express';
+import { Router } from "express";
+import {
+  login,
+  register,
+  profile,
+} from "../services/db/controllers/users.views.controller.js";
+
 const router = Router();
 
-router.get('/login', (req, res)=>{
-    res.render("login");
-})
+router.get("/login", login);
 
-router.get('/register', (req, res)=>{
-    res.render("register");
-})
+router.get("/register", register);
 
-router.get('/', (req, res)=>{
-    res.render("profile", {
-        user: req.session.user
-    });
-})
+router.get("/", profile);
 
 export default router;
